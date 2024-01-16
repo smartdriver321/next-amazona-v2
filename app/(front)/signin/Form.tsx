@@ -4,6 +4,7 @@ import { signIn, useSession } from 'next-auth/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
+import Link from 'next/link'
 
 type Inputs = {
   email: string
@@ -110,6 +111,12 @@ export default function Form() {
             </button>
           </div>
         </form>
+        <div>
+          Need an account?{' '}
+          <Link className='link' href={`/register?callbackUrl=${callbackUrl}`}>
+            Register
+          </Link>
+        </div>
       </div>
     </div>
   )
