@@ -4,7 +4,6 @@ import { auth } from '@/lib/auth'
 
 export const GET = auth(async (...request: any) => {
   const [req, { params }] = request
-
   if (!req.auth) {
     return Response.json(
       { message: 'unauthorized' },
@@ -14,8 +13,6 @@ export const GET = auth(async (...request: any) => {
     )
   }
   await dbConnect()
-
   const order = await OrderModel.findById(params.id)
-
   return Response.json(order)
-}) as any
+})
